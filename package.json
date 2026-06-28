@@ -1,0 +1,37 @@
+{
+  "name": "software-testing",
+  "version": "1.0.0",
+  "description": "Software Testing Note",
+  "keywords": [
+    "st",
+    "note",
+    "software",
+    "testing",
+    "test",
+    "kuntalojha",
+    "kuntal",
+    "ojha",
+    "kuntal-ojha"
+  ],
+  "homepage": "https://github.com/kuntalojha/st#readme",
+  "bugs": {
+    "url": "https://github.com/kuntalojha/st/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuntalojha/st.git"
+  },
+  "license": "MIT",
+  "author": "Kuntal Ojha",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vitepress dev docs --host ",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --port 8080"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}
