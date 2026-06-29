@@ -6,19 +6,19 @@ hero:
   text: 'Assistant Professor'
   tagline: 'Department of Computer Science & Engineering'
   actions:
-    - theme: alt
+    - theme: brand
       text: Software Testing
       link: /st
 
-    - theme: brand
+    - theme: alt
       text: Assignment
       link: /assignment
+    - theme: brand
+      text: Syllabus
+      link: /syllabus
     - theme: alt
       text: Feedback
       link: https://forms.gle/JrvZTGwyCDChGjGJ7
-    - theme: alt
-      text: Syllabus
-      link: /syllabus
 
 features:
   - title: Back-Box Testing
