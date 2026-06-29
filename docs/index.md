@@ -21,13 +21,16 @@ hero:
       link: https://forms.gle/JrvZTGwyCDChGjGJ7
 
 features:
-  - title: Back-Box Testing
-    icon: 👨‍💻
-    details: It is a type of testing where the software is tested in a controlled environment.
-  - title: White-Box Testing
-    icon: 👨‍💻
-    details: It is a type of testing where the software is tested in a controlled environment.
-  - title: Manual Testing
-    icon: 👨‍💻
-    details: Human engineers test the software.
+  - title: Unit 1 — Basics of Software Testing
+    icon: 🧪
+    details: Software testing fundamentals, error/fault/bug terminology, SDLC, STLC, Waterfall, V-Model, Agile, test cases, and entry/exit criteria.
+  - title: Unit 2 — Types & Levels of Testing
+    icon: 🔬
+    details: Unit, integration, system & acceptance testing, alpha/beta testing, performance, stress, security, regression and GUI testing.
+  - title: Unit 3 — Testing Methods
+    icon: ⬛
+    details: Static & dynamic testing, white box techniques (inspections, walkthroughs, reviews), black box techniques (BVA, equivalence partitioning), regression & GUI testing.
+  - title: Unit 4 — Test & Defect Management
+    icon: 📋
+    details: Test planning, approach, criteria, responsibilities, resources, defect classification, defect life cycle, defect template and reporting.
 ---

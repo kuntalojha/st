@@ -1,0 +1,266 @@
+/**
+ * .vitepress/theme/custom.css
+ *
+ * Drop this file and import it in .vitepress/theme/index.js
+ * to apply a polished, student-friendly look on top of
+ * VitePress's default theme.
+ *
+ * Uses only CSS custom properties — safe to update VitePress
+ * without any breakage.
+ */
+
+/* ── Fonts ──────────────────────────────────────────────────────────────── */
+:root {
+  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ── Brand / accent palette ─────────────────────────────────────────────── */
+/* Light mode */
+:root {
+  --vp-c-brand-1:        #646cff;   /* primary purple-blue  */
+  --vp-c-brand-2:        #535bf2;
+  --vp-c-brand-3:        #4149d6;
+  --vp-c-brand-soft:     rgba(100, 108, 255, 0.12);
+
+  /* Sidebar accent */
+  --vp-sidebar-bg-color: #f8f8ff;
+
+  /* Nav */
+  --vp-nav-height:       60px;
+  --vp-nav-bg-color:     rgba(255, 255, 255, 0.92);
+
+  /* Code blocks */
+  --vp-code-block-bg:    #f6f8fb;
+  --vp-code-tab-text-color: #555;
+  --vp-code-tab-active-bar-color: var(--vp-c-brand-1);
+}
+
+/* Dark mode */
+.dark {
+  --vp-c-brand-1:        #818cf8;
+  --vp-c-brand-2:        #6d76f7;
+  --vp-c-brand-3:        #5a64f5;
+  --vp-c-brand-soft:     rgba(129, 140, 248, 0.14);
+
+  --vp-sidebar-bg-color: #13131a;
+  --vp-nav-bg-color:     rgba(18, 18, 28, 0.92);
+  --vp-code-block-bg:    #1a1a2e;
+}
+
+/* ── Navbar ─────────────────────────────────────────────────────────────── */
+.VPNav {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+/* Nav item hover glow */
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* Active nav indicator */
+.VPNavBarMenuLink.active::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: var(--vp-c-brand-1);
+  border-radius: 2px;
+  margin-top: 2px;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+.VPSidebar {
+  border-right: 1px solid var(--vp-c-divider);
+}
+
+/* Section header row */
+.VPSidebarItem.level-0 > .item > .text {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-2);
+}
+
+/* Hover on sidebar item */
+.VPSidebarItem .item:hover {
+  background: var(--vp-c-brand-soft);
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+/* Active sidebar item */
+.VPSidebarItem.is-active > .item {
+  background: var(--vp-c-brand-soft);
+  border-radius: 8px;
+}
+.VPSidebarItem.is-active > .item .link .text {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* Collapse chevron — slightly bigger */
+.VPSidebarItem .caret {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Content area ────────────────────────────────────────────────────────── */
+.vp-doc h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vp-doc h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 1.25rem;
+  margin-top: 2rem;
+}
+
+.vp-doc h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* ── Custom Containers (tip / warning / danger) ──────────────────────────── */
+.custom-block.tip {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+/* ── Code blocks ─────────────────────────────────────────────────────────── */
+.vp-code-group .tabs {
+  border-radius: 10px 10px 0 0;
+}
+
+div[class*='language-'] {
+  border-radius: 10px;
+  margin: 1.25rem 0;
+}
+
+div[class*='language-'] code {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ── Tables ──────────────────────────────────────────────────────────────── */
+.vp-doc table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.vp-doc th {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+}
+
+.vp-doc td {
+  padding: 9px 14px;
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 14px;
+}
+
+.vp-doc tr:hover td {
+  background: var(--vp-c-brand-soft);
+  transition: background 0.15s;
+}
+
+/* ── Badges (used inline in sidebar text via emoji — cosmetic only) ───────── */
+
+/* ── Home page hero button ───────────────────────────────────────────────── */
+.VPHero .action .VPButton.brand {
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  border: none;
+  box-shadow: 0 4px 18px rgba(100, 108, 255, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.VPHero .action .VPButton.brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(100, 108, 255, 0.45);
+}
+
+.VPHero .action .VPButton.alt {
+  border: 1.5px solid var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+}
+
+.VPHero .action .VPButton.alt:hover {
+  background: var(--vp-c-brand-soft);
+}
+
+/* ── Feature cards on home page ──────────────────────────────────────────── */
+.VPFeature {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(100, 108, 255, 0.12);
+  border-color: var(--vp-c-brand-1);
+}
+
+/* ── Doc footer (prev / next) ────────────────────────────────────────────── */
+.VPDocFooter .pager-link {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 14px 20px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.VPDocFooter .pager-link:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+/* ── Scrollbar (webkit) ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-1);
+}
+
+/* ── Selection highlight ─────────────────────────────────────────────────── */
+::selection {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+/* ── Smooth page transitions ─────────────────────────────────────────────── */
+.VPContent {
+  transition: opacity 0.2s ease;
+}
+
+/* ── Mobile tweaks ───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .vp-doc h1 { font-size: 1.6rem; }
+  .vp-doc h2 { font-size: 1.2rem; }
+}
