@@ -264,3 +264,32 @@ div[class*='language-'] code {
   .vp-doc h1 { font-size: 1.6rem; }
   .vp-doc h2 { font-size: 1.2rem; }
 }
+
+/* ── PDF / Print styles ───────────────────────────────── */
+@media print {
+  .VPNav,
+  .VPSidebar,
+  .VPLocalNav,
+  .VPDocFooter,
+  .pdf-btn,
+  .edit-link {
+    display: none !important;
+  }
+
+  .vp-doc {
+    color: #0f172a !important;
+    background: #ffffff !important;
+  }
+
+  .vp-doc h1,
+  .vp-doc h2,
+  .vp-doc h3 {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+  }
+
+  div[class*='language-'] {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+}
