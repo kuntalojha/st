@@ -57,35 +57,47 @@ export default defineConfig({
         text: '📖 Units',
         items: [
           {
-            text: 'Unit 01 — Introduction to Software Testing',
+            text: '📘 Unit 01 — Basics of Software Testing',
             items: [
-              { text: 'Part 1 — Basics & Terminology',       link: 'st/units/unit-1/p1' },
-              { text: 'Part 2 — Testing Principles',         link: 'st/units/unit-1/p2' },
-              { text: 'Part 3 — SDLC & Testing',             link: 'st/units/unit-1/p3' },
+              { text: '📄 Part 1', link: '/st/units/unit-1/p1' },
+              { text: '📄 Part 2', link: '/st/units/unit-1/p2' },
+              { text: '📄 Part 3', link: '/st/units/unit-1/p3' },
+              { text: '📄 Part 4', link: '/st/units/unit-1/p4' },
+              { text: '📄 Part 5', link: '/st/units/unit-1/p5' },
+              { text: '📄 Part 6', link: '/st/units/unit-1/p6' },
             ],
           },
           {
-            text: 'Unit 02 — Black Box & White Box Testing',
+            text: '📘 Unit 02 — Types & Levels of Testing',
             items: [
-              { text: 'Part 1 — Black Box Techniques',       link: 'st/units/unit-2/p1' },
-              { text: 'Part 2 — White Box Techniques',       link: 'st/units/unit-2/p2' },
-              { text: 'Part 3 — Coverage Criteria',          link: 'st/units/unit-2/p3' },
+              { text: '📄 Part 1', link: '/st/units/unit-2/p1' },
+              { text: '📄 Part 2', link: '/st/units/unit-2/p2' },
+              { text: '📄 Part 3', link: '/st/units/unit-2/p3' },
+              { text: '📄 Part 4', link: '/st/units/unit-2/p4' },
+              { text: '📄 Part 5', link: '/st/units/unit-2/p5' },
+              { text: '📄 Part 6', link: '/st/units/unit-2/p6' },
             ],
           },
           {
-            text: 'Unit 03 — Advanced Testing Topics',
+            text: '📘 Unit 03 — Testing Methods',
             items: [
-              { text: 'Part 1 — Integration & System Testing', link: 'st/units/unit-3/p1' },
-              { text: 'Part 2 — Regression & Performance',     link: 'st/units/unit-3/p2' },
-              { text: 'Part 3 — Automation & Tools',           link: 'st/units/unit-3/p3' },
+              { text: '📄 Part 1', link: '/st/units/unit-3/p1' },
+              { text: '📄 Part 2', link: '/st/units/unit-3/p2' },
+              { text: '📄 Part 3', link: '/st/units/unit-3/p3' },
+              { text: '📄 Part 4', link: '/st/units/unit-3/p4' },
+              { text: '📄 Part 5', link: '/st/units/unit-3/p5' },
+              { text: '📄 Part 6', link: '/st/units/unit-3/p6' },
             ],
           },
           {
-            text: 'Unit 04 — t Management & Defect Management',
+            text: '📘 Unit 04 — Test Management & Defect Management',
             items: [
-              { text: 'Part 1 — Integration & System Testing', link: 'st/units/unit-3/p1' },
-              { text: 'Part 2 — Regression & Performance',     link: 'st/units/unit-3/p2' },
-              { text: 'Part 3 — Automation & Tools',           link: 'st/units/unit-3/p3' },
+              { text: '📄 Part 1', link: '/st/units/unit-4/p1' },
+              { text: '📄 Part 2', link: '/st/units/unit-4/p2' },
+              { text: '📄 Part 3', link: '/st/units/unit-4/p3' },
+              { text: '📄 Part 4', link: '/st/units/unit-4/p4' },
+              { text: '📄 Part 5', link: '/st/units/unit-4/p5' },
+              { text: '📄 Part 6', link: '/st/units/unit-4/p6' },
             ],
           },
         ],
@@ -113,62 +125,58 @@ export default defineConfig({
     // ── Sidebar ───────────────────────────────────────────────────────────
     // Each group is collapsible. `collapsed: false` = open on load.
     // `collapsed: true` = closed on load (great for units students haven't reached yet).
-    sidebar: [
-      // ── UNIT 01 ───────────────────────────────────────────────────────
+        sidebar: [
       {
-        text: '🧪 Unit 01 — Basic of software testing',
-        collapsed: false,          // open by default — students start here
+        text: '📘 Unit 01 — Basics of Software Testing',
+        collapsed: false,
         items: [
-          {
-            text: '📄 Part 1 — Basics & Terminology',
-            link: '/st/units/unit-1/p1',
-          },
-          {
-            text: '📄 Part 2 — SDLC & STLC',
-            link: '/st/units/unit-1/p2',
-          },
-          {
-            text: '📄 Part 3 — Models',
-            link: '/st/units/unit-1/p3',
-          },
+          { text: '📄 Part 1', link: '/st/units/unit-1/p1' },
+          { text: '📄 Part 2', link: '/st/units/unit-1/p2' },
+          { text: '📄 Part 3', link: '/st/units/unit-1/p3' },
+          { text: '📄 Part 4', link: '/st/units/unit-1/p4' },
+          { text: '📄 Part 5', link: '/st/units/unit-1/p5' },
+          { text: '📄 Part 6', link: '/st/units/unit-1/p6' },
         ],
       },
 
-      // ── UNIT 02 ───────────────────────────────────────────────────────
       {
-        text: '⬛ Unit 02 — Types and Levels of Testing ',
-        collapsed: true,           // closed — unfolds when the student reaches it
-        items: [
-          {
-            text: '📄 Part 1 — Unit testing',
-            link: '/st/units/unit-2/p1',
-          },
-        ],
-      },
-
-      // ── UNIT 03 ───────────────────────────────────────────────────────
-      {
-        text: '🚀 Unit 03 — Testing methods',
+        text: '📘 Unit 02 — Types & Levels of Testing',
         collapsed: true,
         items: [
-          {
-            text: '📄 Part 1 — Methods of testing',
-            link: '/st/units/unit-3/p1',
-          },
-        ],
-      },
-      // ── UNIT 04 ───────────────────────────────────────────────────────
-      {
-        text: '🚀 Unit 04 — t Management & Defect Management',
-        collapsed: true,
-        items: [
-          {
-            text: '📄 Part 1 — Methods of testing',
-            link: '/st/units/unit-3/p1',
-          },
+          { text: '📄 Part 1', link: '/st/units/unit-2/p1' },
+          { text: '📄 Part 2', link: '/st/units/unit-2/p2' },
+          { text: '📄 Part 3', link: '/st/units/unit-2/p3' },
+          { text: '📄 Part 4', link: '/st/units/unit-2/p4' },
+          { text: '📄 Part 5', link: '/st/units/unit-2/p5' },
+          { text: '📄 Part 6', link: '/st/units/unit-2/p6' },
         ],
       },
 
+      {
+        text: '📘 Unit 03 — Testing Methods',
+        collapsed: true,
+        items: [
+          { text: '📄 Part 1', link: '/st/units/unit-3/p1' },
+          { text: '📄 Part 2', link: '/st/units/unit-3/p2' },
+          { text: '📄 Part 3', link: '/st/units/unit-3/p3' },
+          { text: '📄 Part 4', link: '/st/units/unit-3/p4' },
+          { text: '📄 Part 5', link: '/st/units/unit-3/p5' },
+          { text: '📄 Part 6', link: '/st/units/unit-3/p6' },
+        ],
+      },
+
+      {
+        text: '📘 Unit 04 — Test Management & Defect Management',
+        collapsed: true,
+        items: [
+          { text: '📄 Part 1', link: '/st/units/unit-4/p1' },
+          { text: '📄 Part 2', link: '/st/units/unit-4/p2' },
+          { text: '📄 Part 3', link: '/st/units/unit-4/p3' },
+          { text: '📄 Part 4', link: '/st/units/unit-4/p4' },
+          { text: '📄 Part 5', link: '/st/units/unit-4/p5' },
+          { text: '📄 Part 6', link: '/st/units/unit-4/p6' },
+        ],
+      },
       // ── DIVIDER / EXTRAS ──────────────────────────────────────────────
       {
         text: '❓ Question Bank',
