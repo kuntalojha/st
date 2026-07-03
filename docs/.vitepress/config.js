@@ -121,15 +121,15 @@ export default defineConfig({
         items: [
           {
             text: '📄 Part 1 — Basics & Terminology',
-            link: 'st/units/unit-1/p1',
+            link: '/st/units/unit-1/p1',
           },
           {
             text: '📄 Part 2 — SDLC & STLC',
-            link: 'st/units/unit-1/p2',
+            link: '/st/units/unit-1/p2',
           },
           {
             text: '📄 Part 3 — Models',
-            link: 'st/units/unit-1/p3',
+            link: '/st/units/unit-1/p3',
           },
         ],
       },
@@ -141,7 +141,7 @@ export default defineConfig({
         items: [
           {
             text: '📄 Part 1 — Unit testing',
-            link: 'st/units/unit-2/p1',
+            link: '/st/units/unit-2/p1',
           },
         ],
       },
@@ -153,7 +153,7 @@ export default defineConfig({
         items: [
           {
             text: '📄 Part 1 — Methods of testing',
-            link: 'st/units/unit-3/p1',
+            link: '/st/units/unit-3/p1',
           },
         ],
       },
@@ -164,7 +164,7 @@ export default defineConfig({
         items: [
           {
             text: '📄 Part 1 — Methods of testing',
-            link: 'st/units/unit-3/p1',
+            link: '/st/units/unit-3/p1',
           },
         ],
       },
