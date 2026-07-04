@@ -490,6 +490,73 @@ const today = `Last updated: ${lastUpdated}`
         i = j + 1; continue
       }
 
+      // ── Table ─────────────────────────────────────────────────────────────
+      if (token.type === 'table_open') {
+        let j = i + 1
+        const rows = []
+        let currentRow = []
+        let isHeader = false
+        let inHeader = false
+
+        while (j < tokens.length && tokens[j].type !== 'table_close') {
+          const t = tokens[j]
+          if (t.type === 'thead_open')  { inHeader = true }
+          if (t.type === 'thead_close') { inHeader = false }
+          if (t.type === 'tr_open')     { currentRow = []; isHeader = inHeader }
+          if (t.type === 'tr_close')    {
+            rows.push({ cells: currentRow, isHeader })
+          }
+          if (t.type === 'inline') {
+            currentRow.push(sanitize(t.content))
+          }
+          j++
+        }
+
+        if (rows.length > 0) {
+          addSpacing(4)
+          const colCount = rows[0].cells.length
+          const colW     = CONTENT_W / colCount
+          const cellPad  = 3
+          const fontSize = 8.5
+
+          rows.forEach((row) => {
+            // calculate row height based on tallest cell
+            let maxLines = 1
+            row.cells.forEach(cell => {
+              const lines = doc.splitTextToSize(cell, colW - cellPad * 2)
+              if (lines.length > maxLines) maxLines = lines.length
+            })
+            const rowH = maxLines * (fontSize * 0.45) + cellPad * 2 + 1
+            ensureSpace(rowH + 2)
+
+            // draw cells
+            row.cells.forEach((cell, ci) => {
+              const cx = MARGIN_L + ci * colW
+              // background
+              if (row.isHeader) {
+                doc.setFillColor(238, 240, 255)
+                doc.rect(cx, cursorY - cellPad, colW, rowH, 'F')
+              } else if (rows.indexOf(row) % 2 === 0) {
+                doc.setFillColor(248, 250, 252)
+                doc.rect(cx, cursorY - cellPad, colW, rowH, 'F')
+              }
+              // border
+              doc.setDrawColor(200, 204, 220)
+              doc.setLineWidth(0.25)
+              doc.rect(cx, cursorY - cellPad, colW, rowH, 'S')
+              // text
+              doc.setFont('helvetica', row.isHeader ? 'bold' : 'normal')
+              doc.setFontSize(fontSize)
+              doc.setTextColor(row.isHeader ? 58 : 30, row.isHeader ? 71 : 41, row.isHeader ? 196 : 59)
+              const lines = doc.splitTextToSize(cell, colW - cellPad * 2)
+              doc.text(lines, cx + cellPad, cursorY)
+            })
+            cursorY += rowH
+          })
+          addSpacing(4)
+        }
+        i = j + 1; continue
+      }
       // ── Horizontal rule ───────────────────────────────────────────────────
       if (token.type === 'hr') {
         addSpacing(3)
