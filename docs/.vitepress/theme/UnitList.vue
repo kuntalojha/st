@@ -43,8 +43,10 @@ const units = [
     parts: [
       { label: 'Part 1', link: 'st/units/unit-1/p1' },
       { label: 'Part 2', link: 'st/units/unit-1/p2' },
-      { label: 'Part 2', link: 'st/units/unit-1/p2' },
-
+      { label: 'Part 3', link: 'st/units/unit-1/p3' },
+      { label: 'Part 4', link: 'st/units/unit-1/p4' },
+      { label: 'Part 5', link: 'st/units/unit-1/p5' },
+      { label: 'Part 6', link: 'st/units/unit-1/p6' },
     ],
   },
   {
@@ -55,8 +57,10 @@ const units = [
     parts: [
       { label: 'Part 1', link: 'st/units/unit-2/p1' },
       { label: 'Part 2', link: 'st/units/unit-2/p2' },
-      { label: 'Part 2', link: 'st/units/unit-2/p2' },
-
+      { label: 'Part 3', link: 'st/units/unit-2/p3' },
+      { label: 'Part 4', link: 'st/units/unit-2/p4' },
+      { label: 'Part 5', link: 'st/units/unit-2/p5' },
+      { label: 'Part 6', link: 'st/units/unit-2/p6' },
     ],
   },
   {
@@ -67,8 +71,10 @@ const units = [
     parts: [
       { label: 'Part 1', link: 'st/units/unit-3/p1' },
       { label: 'Part 2', link: 'st/units/unit-3/p2' },
-      { label: 'Part 2', link: 'st/units/unit-3/p2' },
-
+      { label: 'Part 3', link: 'st/units/unit-3/p3' },
+      { label: 'Part 4', link: 'st/units/unit-3/p4' },
+      { label: 'Part 5', link: 'st/units/unit-3/p5' },
+      { label: 'Part 6', link: 'st/units/unit-3/p6' },
     ],
   },
   {
@@ -79,8 +85,10 @@ const units = [
     parts: [
       { label: 'Part 1', link: 'st/units/unit-4/p1' },
       { label: 'Part 2', link: 'st/units/unit-4/p2' },
-      { label: 'Part 2', link: 'st/units/unit-4/p2' },
-
+      { label: 'Part 3', link: 'st/units/unit-4/p3' },
+      { label: 'Part 4', link: 'st/units/unit-4/p4' },
+      { label: 'Part 5', link: 'st/units/unit-4/p5' },
+      { label: 'Part 6', link: 'st/units/unit-4/p6' },
     ],
   },
 ]
