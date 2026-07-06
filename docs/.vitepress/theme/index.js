@@ -1,3 +1,4 @@
+
 // .vitepress/theme/index.js
 //
 // Extends VitePress's default theme and layers our custom CSS on top.
@@ -19,3 +20,21 @@ export default {
     app.component('UnitList', UnitList)
   }
 }
+
+
+// import { h } from 'vue'
+// import DefaultTheme from 'vitepress/theme'
+// import PrintButton from './components/PrintButton.vue'
+// import './style/print.css'
+
+// export default {
+//   extends: DefaultTheme,
+//   Layout() {
+//     return h(DefaultTheme.Layout, null, {
+//       // Injects the print button in the right-side content of the main navbar
+//       'nav-bar-content-after': () => h(PrintButton)
+//     })
+//   }
+// }
+
+

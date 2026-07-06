@@ -1,76 +1,52 @@
 {
-  "hash": "876437dc",
+  "hash": "006f3fa3",
   "configHash": "456768dc",
-  "lockfileHash": "e44fb9cf",
-  "browserHash": "3a3ca03a",
+  "lockfileHash": "ecce46ae",
+  "browserHash": "03fae770",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "82641792",
+      "fileHash": "1c733f0b",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "7377f8d8",
+      "fileHash": "baf9f2ed",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "7dd3428f",
+      "fileHash": "247ae625",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "3a869a77",
+      "fileHash": "e662d571",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../../node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "102c7bf2",
+      "fileHash": "347e3832",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../../node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "9ef09dad",
-      "needsInterop": false
-    },
-    "jspdf": {
-      "src": "../../../../node_modules/jspdf/dist/jspdf.es.min.js",
-      "file": "jspdf.js",
-      "fileHash": "ec249327",
-      "needsInterop": false
-    },
-    "html2canvas": {
-      "src": "../../../../node_modules/html2canvas/dist/html2canvas.esm.js",
-      "file": "html2canvas.js",
-      "fileHash": "c3212ed7",
+      "fileHash": "4f935372",
       "needsInterop": false
     }
   },
   "chunks": {
-    "purify.es-T74HH7FB": {
-      "file": "purify__es-T74HH7FB.js"
-    },
-    "index.es-ISYX2Q5C": {
-      "file": "index__es-ISYX2Q5C.js"
-    },
     "chunk-QAUAGEFW": {
       "file": "chunk-QAUAGEFW.js"
     },
     "chunk-YRNSJHMG": {
       "file": "chunk-YRNSJHMG.js"
-    },
-    "chunk-2ALL2YQY": {
-      "file": "chunk-2ALL2YQY.js"
-    },
-    "chunk-5WRI5ZAA": {
-      "file": "chunk-5WRI5ZAA.js"
     }
   }
 }

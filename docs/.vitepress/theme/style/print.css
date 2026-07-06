@@ -1,0 +1,29 @@
+@media print {
+  /* Hide the navbar, the sidebar navigation, the right table of contents, and the footer */
+  .VPNav,
+  .VPLocalNav,
+  .VPSidebar,
+  .VPDocAside,
+  .VPDocFooter,
+  .pdf-button {
+    display: none !important;
+  }
+
+  /* Reset layout to use the full page width */
+  .VPContent {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  .VPDoc {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Ensure the page does not get cropped if there's vertical scrolling */
+  body, html, #app {
+    position: static !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+}
