@@ -223,61 +223,79 @@ const today = `Last updated: ${lastUpdated}`
 
     // ── Render inline tokens (handles bold, italic, code, text) ──────────────
     // Segments: [{text, bold, italic}]
-    function renderInline(children, startX, fontSize = 10) {
-      // Build segments
-      const segments = []
-      let bold = false, italic = false
-      for (const child of children) {
-        if (child.type === 'strong_open')  { bold = true;  continue }
-        if (child.type === 'strong_close') { bold = false; continue }
-        if (child.type === 'em_open')      { italic = true;  continue }
-        if (child.type === 'em_close')     { italic = false; continue }
-        if (child.type === 'softbreak' || child.type === 'hardbreak') {
-          segments.push({ text: '\n', bold: false, italic: false })
-          continue
-        }
-        if (child.type === 'text' || child.type === 'code_inline') {
-          segments.push({ text: sanitize(child.content), bold, italic })
-        }
-      }
-
-      // Now render segments line-aware
-      // First, flatten into a single string to split into lines, then re-apply styles
-      // Simple approach: render word by word tracking x position
+      function renderInline(children, startX, fontSize = 10, forceBold = false) {
       const lineH = fontSize * 0.42 + 1.8
       const maxX  = MARGIN_L + CONTENT_W
       let x = startX
+      let bold = false
+      let italic = false
 
-      ensureSpace(lineH + 2)
+      for (const child of children) {
+        if (child.type === 'strong_open')  { bold = true;   continue }
+        if (child.type === 'strong_close') { bold = false;  continue }
+        if (child.type === 'em_open')      { italic = true;  continue }
+        if (child.type === 'em_close')     { italic = false; continue }
+        if (child.type === 'image') {
+          const imgSrc  = child.attrs?.find(a => a[0] === 'src')?.[1] || ''
+          const imgName = imgSrc.split('/').pop()
+          const b64     = imageCache[imgName]
+          if (b64) {
+            cursorY += lineH
+            ensureSpace(65)
+            doc.addImage(b64, MARGIN_L, cursorY, CONTENT_W, 60)
+            cursorY += 64
+          }
+          continue
+        }
 
-      for (const seg of segments) {
-        if (seg.text === '\n') {
+        if (child.type === 'softbreak' || child.type === 'hardbreak') {
           cursorY += lineH
           x = startX
           ensureSpace(lineH)
           continue
         }
 
-        const style = seg.bold && seg.italic ? 'bolditalic'
-                    : seg.bold   ? 'bold'
-                    : seg.italic ? 'italic'
+        if (child.type !== 'text' && child.type !== 'code_inline') continue
+        const rawText = sanitize(child.content)
+        if (!rawText) continue
+
+        const style = (bold || forceBold) && italic ? 'bolditalic'
+                    : (bold || forceBold) ? 'bold'
+                    : italic ? 'italic'
                     : 'normal'
 
-        doc.setFont('helvetica', style)
-        doc.setFontSize(fontSize)
-        doc.setTextColor(30, 41, 59)
+        // split on whitespace boundaries keeping delimiters
+        const tokens = rawText.split(/(\s+)/)
+        for (const tok of tokens) {
+          if (tok === '') continue
 
-        // split by spaces to wrap manually
-        const words = seg.text.split(' ')
-        for (let wi = 0; wi < words.length; wi++) {
-          const word = words[wi] + (wi < words.length - 1 ? ' ' : '')
-          const w    = doc.getTextWidth(word)
-          if (x + w > maxX && x !== startX) {
+          // always set font before measuring — critical!
+          doc.setFont('helvetica', style)
+          doc.setFontSize(fontSize)
+          doc.setTextColor(30, 41, 59)
+
+          const w = doc.getTextWidth(tok)
+
+          if (tok.trim() === '') {
+            // whitespace token — only add if not at line start
+            if (x > startX) { doc.text(tok, x, cursorY); x += w }
+            continue
+          }
+
+          // wrap if needed
+          if (x + w > maxX && x > startX) {
             cursorY += lineH
             x = startX
             ensureSpace(lineH)
+            // re-set font after possible page break
+            doc.setFont('helvetica', style)
+            doc.setFontSize(fontSize)
+            doc.setTextColor(30, 41, 59)
           }
-          doc.text(word, x, cursorY)
+          
+
+          console.log(`"${tok}" style=${style}`)
+          doc.text(tok, x, cursorY)
           x += w
         }
       }
@@ -348,6 +366,34 @@ const today = `Last updated: ${lastUpdated}`
 
     // ── Render markdown tokens → PDF ─────────────────────────────────────────
     // We walk the token stream from markdown-it
+
+    // ── Pre-fetch all images ──────────────────────────────────────────────────
+    const imageCache = {}
+    for (const token of tokens) {
+      if (token.type === 'inline' && token.children) {
+        for (const child of token.children) {
+          if (child.type === 'image') {
+            const imgSrc  = child.attrs?.find(a => a[0] === 'src')?.[1] || ''
+            const imgName = imgSrc.split('/').pop()
+            const rawUrl  = `https://raw.githubusercontent.com/kuntalojha/st/main/docs/images/${imgName}`
+            try {
+              const res  = await fetch(rawUrl)
+              const blob = await res.blob()
+              const b64  = await new Promise(resolve => {
+                const reader = new FileReader()
+                reader.onload = () => resolve(reader.result)
+                reader.readAsDataURL(blob)
+              })
+              imageCache[imgName] = b64
+            } catch(e) {
+              console.warn('Could not fetch image:', imgName)
+            }
+          }
+        }
+      }
+    }
+
+
     let i = 0
     while (i < tokens.length) {
       const token = tokens[i]
@@ -391,16 +437,14 @@ const today = `Last updated: ${lastUpdated}`
       }
 
       // ── H3 ────────────────────────────────────────────────────────────────
+      // ── H3 ────────────────────────────────────────────────────────────────
       if (token.type === 'heading_open' && token.tag === 'h3') {
-        const content = tokens[i + 1]?.content || ''
+        const inlineToken = tokens[i + 1]
         addSpacing(3)
         ensureSpace(8)
-        doc.setFont('helvetica', 'bold')
-        doc.setFontSize(11.5)
         doc.setTextColor(30, 41, 59)
-        const lines = doc.splitTextToSize(content, CONTENT_W)
-        doc.text(lines, MARGIN_L, cursorY)
-        cursorY += lines.length * 5.5
+        renderInline(inlineToken?.children || [], MARGIN_L, 11.5, true)
+        addSpacing(3)
         i += 3; continue
       }
 
@@ -417,9 +461,15 @@ const today = `Last updated: ${lastUpdated}`
       if (token.type === 'paragraph_open') {
         const inline = tokens[i + 1]
         if (inline?.type === 'inline') {
-          addSpacing(1)
-          renderInline(inline.children || [], MARGIN_L, 10)
-          addSpacing(2)
+          // skip image-only paragraphs
+          const isImage = inline.children?.length > 0 &&
+            inline.children.every(c => c.type === 'image' || 
+              (c.type === 'text' && c.content.trim() === ''))
+          if (!isImage) {
+            addSpacing(1)
+            renderInline(inline.children || [], MARGIN_L, 10)
+            addSpacing(2)
+          }
         }
         i += 3; continue
       }
