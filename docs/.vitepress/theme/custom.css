@@ -51,10 +51,16 @@
 
 /* ── Navbar ─────────────────────────────────────────────────────────────── */
 .VPNav {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--vp-c-divider);
 }
+
+/* Only apply blur to the navbar bar — not the mobile screen */
+.VPNavBar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+
 
 /* Nav item hover glow */
 .VPNavBarMenuLink:hover,
@@ -292,4 +298,19 @@ div[class*='language-'] code {
     background: #f8fafc !important;
     border: 1px solid #e2e8f0 !important;
   }
+}
+
+/* ── Mobile nav overlay fix ─────────────────────────────────────────────── */
+.VPNavScreen {
+  z-index: 9999 !important;
+  background: var(--vp-c-bg) !important;
+  padding: 16px 24px !important;
+}
+
+/* Hide PDF button when mobile nav is open */
+.VPNavScreen ~ .pdf-btn {
+  display: none !important;
+}
+.VPNavScreen {
+  background-color: var(--vp-c-bg) !important;
 }
